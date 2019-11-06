@@ -1,0 +1,64 @@
+class BankAccount():
+
+    def __init__(self, accountNumber, balance):
+        self.accountNumber = accountNumber
+        self.balance = balance
+
+    def getaccountnumberbalance(self):
+        return self.accountNumber + "   " + str(self.balance) + '' ' Balance.'
+
+class CheckingAccount(BankAccount):
+    deductFee: object
+    checkminimumBalance:  object
+
+    def __init__(self, accountNumber, balance, fees, minimumbalance):
+        BankAccount.__init__(self, accountNumber, balance)
+        self.fees = fees
+        self.minimumbalance = minimumbalance
+
+    def getdeductFee(self):
+        self.balance = self.balance - self.fees
+        return self.accountNumber + "   " + str(self.balance) + '   Balance. '
+
+    def getcheckminimumBalance(self):
+        # this looks about right - MM
+        if self.balance < self.minimumbalance:
+            print("Your account is below the minimum balance!")
+
+class SavingsAccount(BankAccount):
+
+    def __init__(self, accountNumber, balance, interestrate):
+        BankAccount.__init__(self, accountNumber, balance)
+        self.interestrate = interestrate
+
+    def getadd_interest(self):
+        self.balance = self.balance + (self.balance * self.interestrate)
+        print("Bank Account number:   "+ self.accountNumber + " " + str(self.balance) + '')
+
+test1 = BankAccount('12345', 100)
+
+print(test1.getaccountnumberbalance())
+test1.getaccountnumberbalance()
+print("\n")
+
+test2 = CheckingAccount('22345', 25, 5, 50)
+print("test2:")
+test2.getaccountnumberbalance()
+#test2.getCheckingAccount()
+print("deductFee:  " + test2.getdeductFee())
+test2.getcheckminimumBalance()
+print("\n")
+
+test3 = SavingsAccount('23343', 100, 0.02)
+#print(test3.getadd_interest())
+test3.getadd_interest()
+#print("\n")
+
+
+# Grading Rubric
+# 1. there are 3 working classes (BankAccount, CheckingAccount, SavingsAccount): 15 (-6)
+# 2. All classes possess working methods from the diagram: 30 (-5)
+# 3. All class variables are present: 25
+# 4. Was/were the result(s): right? 15 (-3)
+# 5. Did code move process in a discernible direction: 15
+# 6. Were menu selections and inputs present?: 20
